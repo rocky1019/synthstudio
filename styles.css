@@ -533,3 +533,114 @@ footer a {
   font-size: 0.95rem;
   color: #bbb;
 }
+/* Newsletter / Email Section */
+.newsletter {
+  padding: 3rem 2rem;
+  background-color: #111;
+  text-align: center;
+}
+
+.newsletter h2 {
+  color: #F7A8F8;
+  font-size: 1.8rem;
+  font-family: 'Orbitron', sans-serif;
+  margin-bottom: 1rem;
+}
+
+.newsletter input[type="email"] {
+  padding: 0.75rem;
+  border: none;
+  border-radius: 8px;
+  margin-right: 0.5rem;
+  width: 250px;
+  max-width: 90%;
+  font-size: 1rem;
+}
+
+.newsletter button {
+  background-color: #BA9EFF;
+  color: #111;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  box-shadow: 0 0 15px #BA9EFF;
+  animation: pulse 2s infinite ease-in-out;
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+}
+
+.newsletter button:hover {
+  background-color: #F7A8F8;
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #F7A8F8;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 15px #BA9EFF;
+  }
+  50% {
+    box-shadow: 0 0 25px #F7A8F8;
+  }
+  100% {
+    box-shadow: 0 0 15px #BA9EFF;
+  }
+}
+
+/* Resources Section */
+.resources {
+  padding: 3rem 2rem;
+  background-color: #111;
+  text-align: center;
+  border-top: 1px solid #333;
+}
+
+.resources h2 {
+  color: #BA9EFF;
+  font-size: 2rem;
+  font-family: 'Orbitron', sans-serif;
+  margin-bottom: 0.5rem;
+}
+
+.resources p {
+  color: #C6FFF6;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+}
+
+.resource-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.resource-card {
+  background-color: #1b1b1b;
+  border: 1px solid #333;
+  padding: 1.5rem;
+  border-radius: 12px;
+  color: #C6FFF6;
+  text-align: left;
+  text-decoration: none;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.resource-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px rgba(186, 158, 255, 0.3);
+}
+
+.resource-card h3 {
+  font-size: 1.2rem;
+  color: #F7A8F8;
+  margin-bottom: 0.5rem;
+}
+
+.resource-card p {
+  font-size: 0.95rem;
+  color: #bbb;
+}
