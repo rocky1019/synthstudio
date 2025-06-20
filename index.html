@@ -53,6 +53,7 @@
     <nav>
       <a href="#products">Products</a>
       <a href="#story">Story</a>
+      <a href="#about-dev">About Dev</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
@@ -112,7 +113,7 @@
       <h3>Free 200 GPT Prompts Pack</h3>
 <p>Download 200 hand-picked ChatGPT prompts for Instagram content, digital products, growth, writing, and more. No watermark. No sign-up. Instant value.</p>
 
-     <a href="https://synthstudios.gumroad.com/l/200chatgptprompts" class="btn">
+     <a href="https://synthstudios.gumroad.com/l/200Prompts" class="btn">
   <span style="margin-right: 0.5rem;">⬇️</span> Download
 </a>
 
@@ -124,7 +125,8 @@
     </div>
   </div>
 </section>
-<section class="about-dev">
+<section id="about-dev" class="about-dev">
+
   <h2>👨‍💻 About the Developer</h2>
   <p>
     Hey, <a href="https://www.instagram.com/atharva_a_19/" target="_blank">I'm Atharva</a> — the developer and creative brain behind Synth Studios.
@@ -149,7 +151,7 @@
   <h2>🧠 Resources for Creators</h2>
   <p>Tools, freebies, and links I personally use or recommend — all in one place.</p>
   <div class="resource-grid">
-    <a href="https://synthstudios.gumroad.com/l/200chatgptprompts" class="resource-card" target="_blank">
+    <a href="https://synthstudios.gumroad.com/l/200Prompts" class="resource-card" target="_blank">
       <h3>📦 Free 200 ChatGPT Prompts</h3>
       <p>Get my full free pack of prompts for carousels, hooks, content, and more.</p>
     </a>
@@ -177,6 +179,15 @@
 
   </div>
 </section>
+<section id="secret-gift" class="secret-gift hidden">
+  <h2 class="glitch">🟣 Access Granted: Secret File Unlocked</h2>
+  <p>You’ve just accessed an experimental creation from the Synth Lab.  
+It’s not public. It’s not indexed. It’s for you. Right now.</p>
+  <a href="https://www.canva.com/design/DAGq3J2HOv8/ONiMsDkHlxwq1YiZLUHfJg/view?utm_content=DAGq3J2HOv8&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hb160110ffd" class="btn glow-btn">Claim Your Surprise</a>
+</section>
+<div class="secret-orb hidden" id="secretOrb" title="You’ve reached the end… Tap to unlock">
+  🎁
+</div>
 
   <footer id="contact">
     <footer id="contact">
@@ -219,7 +230,95 @@
     banner.style.display = 'none';
   });
 </script>
+<div class="orb-cursor"></div>
+<script>
+  const orb = document.querySelector('.orb-cursor');
+
+  let orbX = window.innerWidth / 2;
+  let orbY = window.innerHeight / 2;
+  let targetX = orbX;
+  let targetY = orbY;
+
+  document.addEventListener('mousemove', function (e) {
+    targetX = e.clientX;
+    targetY = e.clientY;
+  });
+
+  function animateOrb() {
+    orbX += (targetX - orbX) * 0.1;
+    orbY += (targetY - orbY) * 0.1;
+    orb.style.transform = `translate(${orbX}px, ${orbY}px)`;
+    requestAnimationFrame(animateOrb);
+  }
+
+  animateOrb();
+</script>
+<canvas id="stars-bg"></canvas>
+<script>
+  const canvas = document.getElementById('stars-bg');
+  const ctx = canvas.getContext('2d');
+  let stars = [];
+
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  function createStars(count) {
+    stars = [];
+    for (let i = 0; i < count; i++) {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 1.2,
+        alpha: Math.random(),
+        dx: (Math.random() - 0.5) * 0.2,
+        dy: (Math.random() - 0.5) * 0.2,
+      });
+    }
+  }
+
+  function animateStars() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    stars.forEach((star) => {
+      star.x += star.dx;
+      star.y += star.dy;
+      if (star.x < 0 || star.x > canvas.width) star.dx *= -1;
+      if (star.y < 0 || star.y > canvas.height) star.dy *= -1;
+
+      ctx.beginPath();
+      ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(186,158,255,${star.alpha})`;
+      ctx.fill();
+    });
+    requestAnimationFrame(animateStars);
+  }
+
+  window.addEventListener('resize', () => {
+    resizeCanvas();
+    createStars(150);
+  });
+
+  resizeCanvas();
+  createStars(150);
+  animateStars();
+</script>
+ <canvas id="stars-bg"></canvas>
+<script>
+  const secretGift = document.querySelector('.secret-gift');
+
+  window.addEventListener('scroll', () => {
+    const scrollBottom = window.scrollY + window.innerHeight;
+    const docHeight = document.body.offsetHeight;
+
+    if (scrollBottom >= docHeight - 50) {
+      secretGift.classList.remove('hidden');
+      secretGift.classList.add('reveal');
+    }
+  });
+</script>
 
 </body>
-</html>
+<canvas id="stars-bg"></canvas>
 
+</html>
