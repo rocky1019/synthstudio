@@ -8,14 +8,26 @@ body {
 }
 
 header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 2rem;
-  background-color: #111111;
-   border-bottom: 1px solid rgba(198, 255, 246, 0.25);
-  box-shadow: 0 1px 12px rgba(198, 255, 246, 0.2);
+  flex-wrap: wrap;
+  padding: 0.75rem 1.5rem; /* smaller top-bottom padding */
+  background: rgba(17, 17, 17, 0.6);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 0 10px rgba(186, 158, 255, 0.15),
+    0 0 20px rgba(198, 255, 246, 0.05),
+    0 0 30px rgba(198, 255, 246, 0.03);
+  animation: navGlow 5s infinite ease-in-out;
 }
+
+
+
 
 .logo {
   display: flex;
@@ -533,114 +545,183 @@ footer a {
   font-size: 0.95rem;
   color: #bbb;
 }
-/* Newsletter / Email Section */
-.newsletter {
-  padding: 3rem 2rem;
-  background-color: #111;
-  text-align: center;
+.newsletter button:focus {
+  outline: 2px solid #F7A8F8;
+  outline-offset: 2px;
 }
-
-.newsletter h2 {
-  color: #F7A8F8;
-  font-size: 1.8rem;
-  font-family: 'Orbitron', sans-serif;
-  margin-bottom: 1rem;
-}
-
-.newsletter input[type="email"] {
-  padding: 0.75rem;
-  border: none;
-  border-radius: 8px;
-  margin-right: 0.5rem;
-  width: 250px;
-  max-width: 90%;
-  font-size: 1rem;
-}
-
 .newsletter button {
-  background-color: #BA9EFF;
-  color: #111;
   border: none;
+  background-color: #BA9EFF;
+  color: #111111;
   padding: 0.75rem 1.5rem;
   border-radius: 8px;
-  cursor: pointer;
   font-weight: bold;
-  font-size: 1rem;
-  box-shadow: 0 0 15px #BA9EFF;
-  animation: pulse 2s infinite ease-in-out;
-  transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+  cursor: pointer;
+  box-shadow: 0 0 12px #BA9EFF, 0 0 24px #BA9EFF40;
+  transition: all 0.3s ease;
 }
 
 .newsletter button:hover {
+  box-shadow: 0 0 16px #F7A8F8, 0 0 32px #F7A8F880;
   background-color: #F7A8F8;
   transform: scale(1.05);
-  box-shadow: 0 0 20px #F7A8F8;
 }
 
-@keyframes pulse {
+.newsletter button:focus {
+  outline: 2px solid #F7A8F8;
+  outline-offset: 2px;
+}
+@keyframes fontFlicker {
   0% {
-    box-shadow: 0 0 15px #BA9EFF;
+    font-family: 'Poppins', sans-serif;
+    color: #C6FFF6;
+  }
+  25% {
+    font-family: 'Orbitron', sans-serif;
+    color: #F7A8F8;
   }
   50% {
-    box-shadow: 0 0 25px #F7A8F8;
+    font-family: 'Courier New', monospace;
+    color: #BA9EFF;
+  }
+  75% {
+    font-family: 'Arial Black', sans-serif;
+    color: #ffffff;
   }
   100% {
-    box-shadow: 0 0 15px #BA9EFF;
+    font-family: 'Poppins', sans-serif;
+    color: #C6FFF6;
+  }
+}
+.flicker-text {
+  animation: fontFlicker 2s infinite;
+}
+.orb-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 30px;
+  background: radial-gradient(circle, #BA9EFF, #F7A8F8);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: screen;
+  box-shadow: 0 0 15px #BA9EFF, 0 0 30px #F7A8F8;
+  transform: translate(-50%, -50%);
+}
+.ufo-cursor-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.ufo-cursor {
+  width: 60px;
+  height: auto;
+  filter: drop-shadow(0 0 15px #BA9EFF);
+}
+#stars-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.secret-gift {
+  background: #1b1b1b;
+  padding: 3rem 1rem;
+  text-align: center;
+  border-top: 1px solid #333;
+  transition: all 0.5s ease-in-out;
+}
+
+.secret-gift h2 {
+  font-size: 1.8rem;
+  color: #BA9EFF;
+  margin-bottom: 1rem;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.secret-gift p {
+  color: #C6FFF6;
+  margin-bottom: 1.5rem;
+}
+
+.secret-gift.hidden {
+  opacity: 0;
+  transform: translateY(50px);
+  pointer-events: none;
+}
+
+.secret-gift.reveal {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.secret-orb {
+  position: fixed;
+  bottom: 50%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  width: 70px;
+  height: 70px;
+  background: radial-gradient(circle, #BA9EFF, #F7A8F8);
+  border-radius: 50%;
+  box-shadow: 0 0 20px #BA9EFF, 0 0 40px #F7A8F8;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 9999;
+  transition: transform 0.3s ease, opacity 0.4s;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.secret-orb:hover {
+  transform: translate(-50%, 50%) scale(1.1) rotate(3deg);
+  box-shadow: 0 0 30px #F7A8F8, 0 0 60px #BA9EFF;
+}
+
+.secret-orb.revealed {
+  opacity: 1;
+  pointer-events: auto;
+}
+header::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  box-shadow: 0 0 12px rgba(198, 255, 246, 0.05);
+  pointer-events: none;
+}
+@keyframes navGlow {
+  0% {
+    box-shadow:
+      0 0 10px rgba(186, 158, 255, 0.15),
+      0 0 20px rgba(198, 255, 246, 0.05),
+      0 0 30px rgba(198, 255, 246, 0.03);
+  }
+  50% {
+    box-shadow:
+      0 0 20px rgba(186, 158, 255, 0.25),
+      0 0 35px rgba(198, 255, 246, 0.1),
+      0 0 50px rgba(198, 255, 246, 0.05);
+  }
+  100% {
+    box-shadow:
+      0 0 10px rgba(186, 158, 255, 0.15),
+      0 0 20px rgba(198, 255, 246, 0.05),
+      0 0 30px rgba(198, 255, 246, 0.03);
   }
 }
 
-/* Resources Section */
-.resources {
-  padding: 3rem 2rem;
-  background-color: #111;
-  text-align: center;
-  border-top: 1px solid #333;
-}
-
-.resources h2 {
-  color: #BA9EFF;
-  font-size: 2rem;
-  font-family: 'Orbitron', sans-serif;
-  margin-bottom: 0.5rem;
-}
-
-.resources p {
-  color: #C6FFF6;
-  margin-bottom: 2rem;
-  font-size: 1rem;
-}
-
-.resource-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.resource-card {
-  background-color: #1b1b1b;
-  border: 1px solid #333;
-  padding: 1.5rem;
-  border-radius: 12px;
-  color: #C6FFF6;
-  text-align: left;
-  text-decoration: none;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.resource-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 15px rgba(186, 158, 255, 0.3);
-}
-
-.resource-card h3 {
-  font-size: 1.2rem;
-  color: #F7A8F8;
-  margin-bottom: 0.5rem;
-}
-
-.resource-card p {
-  font-size: 0.95rem;
-  color: #bbb;
+header {
+  animation: navGlow 5s infinite ease-in-out;
 }
