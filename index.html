@@ -5,9 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Synth Studios</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="images/favicon.png" type="image/png" />
+
   <link rel="stylesheet" href="styles.css" />
   <!-- AOS CSS -->
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Synth Studios — Digital Products by Atharva</title>
+
+  <!-- ✅ SEO META -->
+  <meta name="description" content="Synth Studios is a digital playground by Atharva — explore prompt packs, digital product ideas, free templates, and creator tools." />
+  <meta name="keywords" content="Synth Studios, digital products, ChatGPT prompts, AI tools, Notion templates, Atharva, Gumroad" />
+  <meta name="author" content="Atharva Aghav" />
+
+  <!-- ✅ Open Graph for social sharing -->
+  <meta property="og:title" content="Synth Studios — Digital Products by Atharva" />
+  <meta property="og:description" content="Freebies, prompt packs, tools, and digital experiments — handcrafted by one solo dev." />
+  <meta property="og:image" content="https://synthstudios.vercel.app/images/social-preview.jpg" />
+  <meta property="og:url" content="https://synthstudios.vercel.app" />
+  <meta property="og:type" content="website" />
+
+  <!-- ✅ Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Synth Studios" />
+  <meta name="twitter:description" content="Solo-built digital products, tools, and free stuff for creators." />
+  <meta name="twitter:image" content="https://synthstudios.vercel.app/images/social-preview.jpg" />
+
+  <!-- ✅ Favicon (Optional) -->
+  <link rel="icon" href="images/Synth2-removebg-preview.png" type="image/png" />
+
+  <!-- ✅ Fonts + CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
 
 </head>
 <body>
@@ -80,7 +112,10 @@
       <h3>Free 200 GPT Prompts Pack</h3>
 <p>Download 200 hand-picked ChatGPT prompts for Instagram content, digital products, growth, writing, and more. No watermark. No sign-up. Instant value.</p>
 
-      <a href="https://synthstudios.gumroad.com/l/200Prompts" class="btn">Download without Email</a>
+     <a href="https://synthstudios.gumroad.com/l/200chatgptprompts" class="btn">
+  <span style="margin-right: 0.5rem;">⬇️</span> Download
+</a>
+
       <form action="https://tally.so/r/nrR2Np" method="POST" class="email-form" target="_blank">
   <input type="email" name="email" placeholder="Enter your email" required>
   <button type="submit" class="btn">Send Me the Free Prompts</button>
@@ -101,6 +136,46 @@
     <br><br>
     This site, every product, every line of code — all handcrafted. No team, no fluff. Just one curious dev building something real for the creative internet.
   </p>
+</section>
+<section class="newsletter">
+  <h2>💌 Join the Creator Lab</h2>
+  <p>Get updates, free drops, and creative tools delivered straight to your inbox — no spam, just pure synth energy.</p>
+  <form action="https://tally.so/r/nrR2Np" method="GET" target="_blank">
+    <input type="email" placeholder="Your email address" required>
+    <button type="submit">Subscribe</button>
+  </form>
+</section>
+<section class="resources">
+  <h2>🧠 Resources for Creators</h2>
+  <p>Tools, freebies, and links I personally use or recommend — all in one place.</p>
+  <div class="resource-grid">
+    <a href="https://synthstudios.gumroad.com/l/200chatgptprompts" class="resource-card" target="_blank">
+      <h3>📦 Free 200 ChatGPT Prompts</h3>
+      <p>Get my full free pack of prompts for carousels, hooks, content, and more.</p>
+    </a>
+    <a href="https://www.canva.com/" class="resource-card" target="_blank">
+      <h3>🎨 Canva</h3>
+      <p>The exact tool I use to design all Synth visuals, carousels, and digital products.</p>
+    </a>
+    <a href="https://tally.so/" class="resource-card" target="_blank">
+      <h3>📝 Tally Forms</h3>
+      <p>My go-to for collecting emails and feedback from creators — simple and free.</p>
+    </a>
+    <a href="https://www.remove.bg/" class="resource-card" target="_blank">
+      <h3>🧼 Remove.bg</h3>
+      <p>Fastest tool I use to remove backgrounds for thumbnails, product images, and more.</p>
+    </a>
+    <a href="https://chat.openai.com/" class="resource-card" target="_blank">
+  <h3>🤖 ChatGPT</h3>
+  <p>The main AI engine behind every Synth prompt, tool, and experiment. My daily driver.</p>
+</a>
+
+<a href="https://gumroad.com/" class="resource-card" target="_blank">
+  <h3>🛍️ Gumroad</h3>
+  <p>Where all Synth Studios digital products are sold and delivered to customers globally.</p>
+</a>
+
+  </div>
 </section>
 
   <footer id="contact">
@@ -124,6 +199,24 @@
     duration: 800,
     easing: 'ease-in-out',
     once: true
+  });
+</script>
+<div id="cookie-banner" class="cookie-banner">
+  <p>This website uses cookies to improve your experience. By using it, you agree to our cookie policy.</p>
+  <button id="accept-cookies">Got it 🍪</button>
+</div>
+<script>
+  const banner = document.getElementById('cookie-banner');
+  const button = document.getElementById('accept-cookies');
+
+  // Check if user already accepted
+  if (localStorage.getItem('cookiesAccepted')) {
+    banner.style.display = 'none';
+  }
+
+  button.addEventListener('click', () => {
+    localStorage.setItem('cookiesAccepted', 'true');
+    banner.style.display = 'none';
   });
 </script>
 
